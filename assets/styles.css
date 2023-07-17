@@ -1,7 +1,7 @@
-body,
+/* body,
 html {
     height: 100%;
-}
+} */
 
 #partners {
     display: flex;
@@ -30,6 +30,15 @@ html {
 
 body {
     background-color: #C2E1E1;
+}
+
+#hero {
+
+    height: 100vh;
+}
+
+#hero-image img {
+    height: 450px;
 }
 
 #social {
