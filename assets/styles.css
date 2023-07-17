@@ -1,0 +1,51 @@
+body,
+html {
+    height: 100%;
+}
+
+#partners {
+    display: flex;
+    margin: auto;
+    align-items: center;
+    opacity: .4;
+
+}
+
+#partners img {
+    position: relative;
+    width: 300px;
+
+}
+
+
+
+#navBar {
+    background-color: #10727B;
+}
+
+.nav-link,
+.navbar-brand {
+    color: white;
+}
+
+body {
+    background-color: #C2E1E1;
+}
+
+#social {
+    display: -ms-inline-flexbox;
+}
+
+#social i {
+    margin: 3px;
+    width: 50px;
+
+}
+
+#social a i:hover {
+    transform: scale(1.5);
+}
+
+#partnersMain {
+    background-color: #10727B;
+}

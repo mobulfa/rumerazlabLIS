@@ -1,0 +1,29 @@
+<% layout('/layouts/boilerplate') %>
+
+
+    <div class="row mt-5">
+        <div class="container bg-info bg-gradient col-4 offset-4 rounded">
+            <h2 class="text-center mt-2">Login</h2>
+            <div class="col-sm-8 offset-2">
+                <form action="" method="POST" class="needs-validation" novalidate>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" name="email" id="floatingInput"
+                            placeholder="name@example.com" required>
+                        <label for="floatingInput">Email address</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
+                            required>
+                        <label for="floatingPassword">Password</label>
+                    </div>
+                    <div class="button-control btn-group m-2 ms-auto" role="group" aria-label="Action Button">
+                        <button class="btn btn-danger bg-gradient">Cancel</button>
+                        <button class="btn btn-success bg-gradient"> Login</button>
+                    </div>
+                </form>
+                <label class="mb-3" for="signup">No Account Yet?
+                    <span><a href="/Sign-up">Signup Here</a></label></span>
+            </div>
+
+        </div>
+    </div>
