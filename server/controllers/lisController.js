@@ -31,9 +31,13 @@ exports.faqsPage = catchAsync(async (req, res) => {
 
 exports.userLogin = catchAsync(async (req, res) => {
     res.status(200).render('customer/login');
-    // res.send('Login')
 })
 
 exports.signupPage = catchAsync(async (req, res) => {
     res.status(200).render('customer/signupForm');
+})
+
+//ADMIN VIEWS
+exports.adminPage = catchAsync(async (req, res) => {
+    res.status(200).render('admin/index');
 })

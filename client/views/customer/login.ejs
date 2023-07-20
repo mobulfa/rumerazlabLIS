@@ -1,6 +1,6 @@
 <% layout('/layouts/boilerplate') %>
 
-
+    <!-- 
     <div class="row mt-5">
         <div class="container bg-info bg-gradient col-4 offset-4 rounded">
             <h2 class="text-center mt-2">Login</h2>
@@ -17,13 +17,70 @@
                         <label for="floatingPassword">Password</label>
                     </div>
                     <div class="button-control btn-group m-2 ms-auto" role="group" aria-label="Action Button">
-                        <button class="btn btn-danger bg-gradient">Cancel</button>
+                        <a href="/Home" class="btn btn-danger bg-gradient">Cancel</a>
                         <button class="btn btn-success bg-gradient"> Login</button>
                     </div>
-                </form>
-                <label class="mb-3" for="signup">No Account Yet?
-                    <span><a href="/Sign-up">Signup Here</a></label></span>
-            </div>
+                </form> -->
+    <!-- <label class="mb-3" for="signup">No Account Yet?
+                    <span><a href="/Sign-up">Signup Here</a></label></span> -->
+    <!-- </div>
 
         </div>
+    </div> -->
+    <section class="background-radial-gradient overflow-hidden">
+
+        <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+            <div class="row gx-lg-5 align-items-center mb-5">
+                <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+                    <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+                        Welcome to <br />
+                        <span style="color: hsl(218, 81%, 75%)">RUMERAZ LABORATORY</span>
+                    </h1>
+                </div>
+
+                <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+                    <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+                    <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+
+                    <div class="card bg-glass">
+                        <div class="card-body px-4 py-5 px-md-5">
+                            <form action="/login" method="POST">
+
+                                <div class="row">
+                                    <center>
+                                        <h1 class="mb-3 h3">LOGIN</h1>
+                                    </center>
+                                </div>
+
+                                <!-- Email input -->
+                                <div class="form-outline mb-4">
+                                    <input type="email" name="email" id="form3Example3" class="form-control" />
+                                    <label class="form-label" for="form3Example3">Email address</label>
+                                </div>
+
+                                <!-- Password input -->
+                                <div class="form-outline mb-4">
+                                    <input type="password" name="password" id="form3Example4" class="form-control" />
+                                    <label class="form-label" for="form3Example4">Password</label>
+                                </div>
+
+
+                                <!-- Submit button -->
+                                <button type="submit" class="btn btn-primary btn-block mb-4">
+                                    Sign In
+                                </button>
+
+                                <!-- Register buttons -->
+                                <div class="text-center">
+                                    <p>Don't have an account yet? <a href="/signup">Sign up</a></p>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Section: Design Block -->
     </div>

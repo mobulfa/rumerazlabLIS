@@ -28,17 +28,18 @@ html {
     color: white;
 }
 
+
 body {
     background-color: #C2E1E1;
 }
 
 #hero {
-
     height: 100vh;
 }
 
 #hero-image img {
     height: 450px;
+    margin-top: 40px;
 }
 
 #social {
@@ -46,9 +47,9 @@ body {
 }
 
 #social i {
-    margin: 3px;
+    margin: 20px;
+    padding-left: 10px;
     width: 50px;
-
 }
 
 #social a i:hover {
@@ -57,4 +58,88 @@ body {
 
 #partnersMain {
     background-color: #10727B;
+}
+
+footer {
+    background-color: #10727B;
+    color: white;
+}
+
+
+/* LOGIN STYLING */
+
+.background-radial-gradient {
+    background-color: hsl(218, 41%, 15%);
+    background-image: radial-gradient(650px circle at 0% 0%,
+            hsl(218, 41%, 35%) 15%,
+            hsl(218, 41%, 30%) 35%,
+            hsl(218, 41%, 20%) 75%,
+            hsl(218, 41%, 19%) 80%,
+            transparent 100%),
+        radial-gradient(1250px circle at 100% 100%,
+            hsl(218, 41%, 45%) 15%,
+            hsl(218, 41%, 30%) 35%,
+            hsl(218, 41%, 20%) 75%,
+            hsl(218, 41%, 19%) 80%,
+            transparent 100%);
+}
+
+.bg-glass {
+    background-color: hsla(0, 0%, 100%, 0.9) !important;
+    backdrop-filter: saturate(200%) blur(25px);
+}
+
+/* SIDE NAVIGATION STYLING */
+
+/* The sidebar menu */
+.sidenav {
+    height: 100%;
+    /* Full-height: remove this if you want "auto" height */
+    width: 160px;
+    /* Set the width of the sidebar */
+    position: fixed;
+    /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1;
+    /* Stay on top */
+    top: 3;
+    /* Stay at the top */
+    left: 0;
+    background-color: #0a9474;
+    /* Black */
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    padding-top: 20px;
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 15px;
+    color: #fbfbfb;
+    display: block;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #047404;
+    background-color: #C2E1E1;
+}
+
+/* Style page content */
+.main {
+    margin-left: 160px;
+    /* Same as the width of the sidebar */
+    padding: 0px 10px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
 }

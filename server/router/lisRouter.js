@@ -6,7 +6,7 @@ const { model } = require('mongoose');
 
 
 
-//CUSTOMER ROUTER
+//CUSTOMER ROUTER OR CLIENT SIDE
 
 router.get('/Home', lisController.landingPage);
 router.get('/About', lisController.aboutPage);
@@ -14,5 +14,9 @@ router.get('/Faq', lisController.faqsPage);
 router.get('/User-Login', lisController.userLogin);
 router.get('/Sign-up', lisController.signupPage);
 
+
+//ADMIN SIDE ROUTER
+
+router.get('/Admin', lisController.adminPage);
 
 module.exports = router;
