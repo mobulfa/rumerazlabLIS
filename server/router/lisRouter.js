@@ -18,5 +18,7 @@ router.get('/Sign-up', lisController.signupPage);
 //ADMIN SIDE ROUTER
 
 router.get('/Admin', lisController.adminPage);
+router.get('/Testtype', lisController.testTypePage);
+router.get('/Allcustomer', lisController.listCustomerPage);
 
 module.exports = router;

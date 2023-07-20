@@ -41,3 +41,11 @@ exports.signupPage = catchAsync(async (req, res) => {
 exports.adminPage = catchAsync(async (req, res) => {
     res.status(200).render('admin/index');
 })
+
+exports.testTypePage = catchAsync(async (req, res) => {
+    res.status(200).render('admin/testtype');
+})
+
+exports.listCustomerPage = catchAsync(async (req, res) => {
+    res.status(200).render('admin/customerlist');
+})

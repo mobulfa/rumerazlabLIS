@@ -1,0 +1,134 @@
+<% layout('/layouts/adminboilerplate') %>
+
+    <div class="container mt-5 border border-primary">
+        <div class="container m-3">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Add Customer
+            </button>
+        </div>
+
+        <div class="container m-3 rounded">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Gender</th>
+                    <th>BirthDate</th>
+                    <th>Age</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Actions</th>
+                </tr>
+                <tr>
+                    <td>Customer name</td>
+                    <td>Address </td>
+                    <td>Gender</td>
+                    <td>BirthDate</td>
+                    <td>Age</td>
+                    <td>Username</td>
+                    <td>Password</td>
+                    <td>
+                        <div class=" btn-group">
+                            <a href="" class="btn btn-info">Edit</a>
+                            <a href="" class="btn btn-danger">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Customer name</td>
+                    <td>Address </td>
+                    <td>Gender</td>
+                    <td>BirthDate</td>
+                    <td>Age</td>
+                    <td>Username</td>
+                    <td>Password</td>
+                    <td>
+                        <div class=" btn-group">
+                            <a href="" class="btn btn-info">Edit</a>
+                            <a href="" class="btn btn-danger">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+
+
+            </table>
+        </div>
+    </div>
+
+    <!-- MODAL ADD CUSTOMER FORM  -->
+
+    <!-- Button trigger modal -->
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Customer FOrm</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="POST" class="needs-validation" novalidate>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" name="fname" id="fname" class="form-control" placeholder="First Name"
+                                    aria-label="First name">
+                            </div>
+                            <div class="col">
+                                <input type="text" name="lname" id="lname" class="form-control" placeholder="Last Name"
+                                    aria-label="Last name">
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col">
+                                <input type="text" name="address" id="address" class="form-control"
+                                    placeholder="address" aria-label="Address">
+                            </div>
+                        </div>
+
+                        <label for="gender">Gender:</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                                value="male">
+                            <label class="form-check-label" for="inlineRadio1">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                                value="female">
+                            <label class="form-check-label" for="inlineRadio2">Female</label>
+                        </div>
+
+
+                        <div class="row">
+                            <label for="birth">Birth Date</label>
+                            <div class="col">
+                                <input type="date" name="birth" class="form-control">
+
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="input-group mt-2">
+                                    <span class="input-group-text" id="basic-addon1">username</span>
+                                    <input type="text" name="username" class="form-control" disabled value="">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input-group mt-2">
+                                    <span class="input-group-text" id="basic-addon1">password</span>
+                                    <input type="text" name="password" class="form-control" disabled value="">
+                                </div>
+                            </div>
+
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
