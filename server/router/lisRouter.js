@@ -20,5 +20,13 @@ router.get('/Sign-up', lisController.signupPage);
 router.get('/Admin', lisController.adminPage);
 router.get('/Testtype', lisController.testTypePage);
 router.get('/Allcustomer', lisController.listCustomerPage);
+router.post('/Allcustomer', lisController.addCustomer);
+
+router.get('/Allcustomer/:id', lisController.editCustomer);
+router.patch('/Allcustomer/:id', lisController.updateCustomer);
+router.delete('/Allcustomer/:id', lisController.deleteCustomer);
+
+
+
 
 module.exports = router;

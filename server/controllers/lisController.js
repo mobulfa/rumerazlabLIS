@@ -1,6 +1,6 @@
 //Imports
 const mongoose = require('mongoose');
-const customer = require('../../models/customer');
+const Customer = require('../../models/customer');
 const catchAsync = require('../../utils/catchAsync');
 
 
@@ -47,5 +47,39 @@ exports.testTypePage = catchAsync(async (req, res) => {
 })
 
 exports.listCustomerPage = catchAsync(async (req, res) => {
-    res.status(200).render('admin/customerlist');
+    const allCustomer = await Customer.find({});
+    res.status(200).render('admin/customerlist', { allCustomer });
+})
+
+exports.addCustomer = catchAsync(async (req, res) => {
+    const newCustomer = new Customer(req.body);
+    // console.log(req.body);
+    await newCustomer.save();
+    res.redirect('/Allcustomer')
+
+})
+
+exports.editCustomer = catchAsync(async (req, res) => {
+    const customerId = req.params.id;
+    const customer = await Customer.findById(customerId);
+
+    if (customer) {
+        res.status(200).render('admin/showcustomer', { customer })
+    }
+})
+
+exports.updateCustomer = catchAsync(async (req, res) => {
+    const customerId = req.params.id;
+    const customer = await Customer.findByIdAndUpdate(customerId, { ...req.body });
+    // , {runValidators:true, new:true});
+    res.redirect(`/Allcustomer`);
+
+})
+
+exports.deleteCustomer = catchAsync(async (req, res) => {
+    const customerId = req.params.id;
+    await Customer.findByIdAndDelete(customerId);
+    res.redirect('/Allcustomer')
+
+
 })

@@ -1,0 +1,118 @@
+<% layout('/layouts/adminboilerplate') %>
+
+    <!-- EDIT CUSTOMER MODAL FORM -->
+
+    <!-- <div class="modal fade" id="editCustomer" tabindex="-1" aria-labelledby="editCustomer" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="editCustomer">Edit Customer Form</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body"> -->
+    <div class="container rounded py-3 mt-3" style="border: 2px solid blue;">
+        <div class="">
+            <form action="/Allcustomer/<%= customer._id %>?_method=PATCH" method="POST" class="needs-validation"
+                novalidate>
+                <div class="row">
+                    <div class="col">
+                        <label for="fname">First Name</label>
+                        <input type="text" name="fname" id="fname" class="form-control" aria-label="First name" required
+                            value="<%= customer.fname %>">
+                    </div>
+                    <div class="col">
+                        <label for="mname">Middle Name</label>
+                        <input type="text" name="mname" id="mname" class="form-control" aria-label="Mid name" required
+                            value="<%= customer.mname %>">
+                    </div>
+                    <div class="col">
+                        <label for="lname">Last Name</label>
+                        <input type="text" name="lname" id="lname" class="form-control" aria-label="Last name" required
+                            value="<%= customer.lname %>">
+                    </div>
+
+                </div>
+                <div class="mt-2">
+                    <div class="col">
+                        <label for="email">Email</label>
+                        <input type="email" required class="form-control" name="email" id="email"
+                            value="<%= customer.email %>">
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <div class="col">
+                        <label for="contact">Contact Number</label>
+                        <input type="number" required class="form-control" name="contact" id="connum"
+                            value="<%= customer.contact %>">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col">
+                        <label for="address">Address</label>
+                        <input type="text" name="address" id="address" class="form-control"
+                            value="<%= customer.address %>" aria-label="Address" required>
+                    </div>
+                </div>
+
+                <label for="gender">Gender:</label>
+                <% if (customer.gender==='male' ) { %>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="male"
+                            required checked>
+                        <label class="form-check-label" for="inlineRadio1">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="female"
+                            required>
+                        <label class="form-check-label" for="inlineRadio2">Female</label>
+                    </div>
+                    <% }else { %>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="male"
+                                required>
+                            <label class="form-check-label" for="inlineRadio1">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="female"
+                                required checked>
+                            <label class="form-check-label" for="inlineRadio2">Female</label>
+                        </div>
+
+                        <% } %>
+                            <div class="row">
+
+                                <div class="col">
+                                    <label for="birthdate">Birth Date</label>
+                                    <input type="date" name="birthdate" class="form-control" required
+                                        value="<%= customer.birthdate%>">
+                                </div>
+                                <div class="col">
+                                    <label for="age">Age</label>
+                                    <input type="number" name="age" class="form-control" required
+                                        value="<%= customer.age%>">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="input-group mt-2">
+                                        <span class="input-group-text" id="basic-addon1">username</span>
+                                        <input type="text" name="username" class="form-control" required
+                                            value="<%= customer.username%>">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="input-group mt-2">
+                                        <span class="input-group-text" id="basic-addon1">password</span>
+                                        <input type="text" name="password" class="form-control" required
+                                            value="<%= customer.password%>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-2">
+                                <button class="btn btn-success" data-bs-dismiss=" modal">Save changes</button>
+                                <a href="/Allcustomer" class="btn btn-warning">Cancel</a>
+                            </div>
+
+            </form>
+        </div>
+    </div>
