@@ -1,6 +1,7 @@
 //Imports
 const mongoose = require('mongoose');
 const Customer = require('../../models/customer');
+const Testlist = require('../../models/testlist');
 const catchAsync = require('../../utils/catchAsync');
 
 
@@ -39,7 +40,10 @@ exports.signupPage = catchAsync(async (req, res) => {
 
 //ADMIN VIEWS
 exports.adminPage = catchAsync(async (req, res) => {
-    res.status(200).render('admin/index');
+    const countCustomer = await Customer.count({});
+    const countTest = await Testlist.count({});
+    res.status(200).render('admin/index', { countCustomer, countTest });
+
 })
 
 exports.testTypePage = catchAsync(async (req, res) => {

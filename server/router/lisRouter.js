@@ -29,4 +29,5 @@ router.delete('/Allcustomer/:id', lisController.deleteCustomer);
 
 
 
+
 module.exports = router;
