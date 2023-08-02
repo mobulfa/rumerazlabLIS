@@ -7,9 +7,10 @@
             </button>
         </div>
 
-        <div class="container m-3 rounded">
-            <table class="table table-bordered">
+        <div class="container m-3 rounded table-responsive">
+            <table class="table table-striped mb-0 table-bordered">
                 <tr>
+
                     <th>Name</th>
                     <th>Email</th>
                     <th>Contact No.</th>
@@ -17,56 +18,52 @@
                     <th>Gender</th>
                     <th>BirthDate</th>
                     <th>Age</th>
-                    <th>Username</th>
-                    <th>Password</th>
                     <th>Actions</th>
                 </tr>
-                <% for (let customers of allCustomer) {%>
-                    <tr>
+                <tbody class="table-group-divider">
+                    <% for (let customers of allCustomer) {%>
+                        <tr>
 
-                        <td>
-                            <%= customers.lname %>,
-                                <%= customers.fname %>
-                                    <%= customers.mname %>
-                        </td>
-                        <td>
-                            <%= customers.email %>
-                        </td>
-                        <td>
-                            <%= customers.contact %>
-                        </td>
-                        <td>
-                            <%= customers.address %>
-                        </td>
-                        <td>
-                            <%= customers.gender %>
-                        </td>
-                        <td>
-                            <%= customers.birthdate %>
-                        </td>
-                        <td>
-                            <%= customers.age %>
-                        </td>
-                        <td>
-                            <%= customers.username %>
-                        </td>
-                        <td>
-                            <%= customers.password %>
-                        </td>
-                        <td>
-                            <form action="/Allcustomer/<%= customers._id %>?_method=DELETE" method="POST">
-                                <div class=" btn-group">
-                                    <a href="/Allcustomer/<%= customers._id %>" class="btn btn-info">Edit</a>
+                            <td>
+                                <%= customers.lname %>,
+                                    <%= customers.fname %>
+                                        <%= customers.mname %>
+                            </td>
+                            <td>
+                                <%= customers.email %>
+                            </td>
+                            <td>
+                                <%= customers.contact %>
+                            </td>
+                            <td>
+                                <%= customers.address %>
+                            </td>
+                            <td>
+                                <%= customers.gender %>
+                            </td>
+                            <td>
+                                <%= customers.birthdate %>
 
-                                    <button class="btn btn-danger">
-                                        Delete
-                                    </button>
+                            </td>
+                            <td>
+                                <%= customers.age %>
+                            </td>
 
-                                </div>
-                            </form>
-                        </td>
-                    </tr>
-                    <% } %>
+                            <td>
+                                <form action="/Allcustomer/<%= customers._id %>?_method=DELETE" method="POST">
+                                    <div class=" btn-group">
+                                        <a href="/Allcustomer/<%= customers._id %>" class="btn btn-primary">Edit</a>
+
+                                        <a href="/Processcustomer/<%= customers._id %>" class="btn btn-info">Process
+                                            Test</a>
+
+                                    </div>
+                                </form>
+                            </td>
+                        </tr>
+                        <% } %>
+                </tbody>
+
             </table>
         </div>
     </div>
@@ -140,14 +137,16 @@
 
                             <div class="col">
                                 <label for="birthdate">Birth Date</label>
-                                <input type="date" name="birthdate" class="form-control" required>
+                                <input type="date" name="birthdate" class="form-control" required id="bday">
                             </div>
+
+
                             <div class="col">
                                 <label for="age">Age</label>
                                 <input type="number" name="age" class="form-control" required>
                             </div>
                         </div>
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col">
                                 <div class="input-group mt-2">
                                     <span class="input-group-text" id="basic-addon1">username</span>
@@ -161,7 +160,7 @@
                                 </div>
                             </div>
 
-                        </div>
+                        </div> -->
                 </div>
                 <div class="modal-footer">
                     <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button> -->

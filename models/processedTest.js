@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const CustomerList = new Schema({
+const ProcessedTest = new Schema({
     caseno: Number,
     fname: String,
     lname: String,
@@ -17,8 +17,9 @@ const CustomerList = new Schema({
         type: Number,
         min: 11
     },
-    email: String,
-    gender: String,
-    birthdate: String
+    department: String,
+    test: String,
+    result: String,
+    range: String
 })
-module.exports = mongoose.model('Customers', CustomerList);
+module.exports = mongoose.model('Processedtest', ProcessedTest);

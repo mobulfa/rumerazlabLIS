@@ -16,15 +16,37 @@ router.get('/Sign-up', lisController.signupPage);
 
 
 //ADMIN SIDE ROUTER
-
-router.get('/Admin', lisController.adminPage);
+router.get('/Admin/Login', lisController.login);
+router.post('/Admin', lisController.adminPage);
+router.get('/Dashboard', lisController.dashboard);
 router.get('/Testtype', lisController.testTypePage);
 router.get('/Allcustomer', lisController.listCustomerPage);
-router.post('/Allcustomer', lisController.addCustomer);
+router.get('/Test', lisController.test);
 
+
+//ADMIN CUSTOMER CRUD
+router.post('/Allcustomer', lisController.addCustomer);
 router.get('/Allcustomer/:id', lisController.editCustomer);
 router.patch('/Allcustomer/:id', lisController.updateCustomer);
 router.delete('/Allcustomer/:id', lisController.deleteCustomer);
+
+//ADMIN TEST CRUD
+router.post('/Test', lisController.addTest);
+router.get('/Test/:id', lisController.editTest);
+router.patch('/Test/:id', lisController.updateTest);
+router.delete('/Test/:id', lisController.deleteTest);
+
+
+
+
+
+//Process Customer Test
+router.get('/Processcustomer/:id', lisController.processCustomer);
+
+
+
+
+
 
 
 

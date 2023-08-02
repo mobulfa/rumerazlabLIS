@@ -1,0 +1,62 @@
+<% layout('/layouts/adminboilerplate') %>
+    <form action="/">
+
+        <div class="container mt-4">
+            <div class="col-4">
+                <label for="CaseNo">CaseNo: <%= caseNo %></label>
+            </div>
+
+
+            <!-- Customer Info -->
+
+            <label for="customer_name">Customer Name: </label>
+            <input type="text" value=" <%= customerID.lname %>, <%= customerID.fname %>" disabled />
+            <label for="Address">Address:</label>
+            <input type="text" disabled value="<%= customerID.address %>" />
+            <label for="Age">Age:</label>
+            <input type="text" disabled value="<%= customerID.age %>" />
+
+
+            <form action="/Processcustomer" method="POST">
+                <div class="row col-md-4">
+                    <label for="test">Select Test</label>
+                    <select name="test" id="test">
+                        <% for (let tests of allTest) {%>
+                            <option value="<%= tests.test %>">
+                                <%= tests.test %>
+                            </option>
+                            <% } %>
+                    </select>
+                    <button class="btn btn-primary">Add Test</button>
+                </div>
+
+            </form>
+
+
+
+            <!-- <div class="row mt-5">
+                <label for="name">Customer Name</label>
+            </div> -->
+            <div class="row mt-2 col-4">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Department</th>
+                        <th>Test Type</th>
+                        <th>Result</th>
+                        <th>Normal Range</th>
+
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+
+                    </tr>
+
+                </table>
+            </div>
+            <button class="btn btn-outline-success"> Save </button>
+        </div>
+    </form>

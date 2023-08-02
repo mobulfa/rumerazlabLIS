@@ -1,15 +1,6 @@
 <% layout('/layouts/adminboilerplate') %>
 
-    <!-- EDIT CUSTOMER MODAL FORM -->
 
-    <!-- <div class="modal fade" id="editCustomer" tabindex="-1" aria-labelledby="editCustomer" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="editCustomer">Edit Customer Form</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body"> -->
     <div class="container rounded py-3 mt-3" style="border: 2px solid blue;">
         <div class="">
             <form action="/Allcustomer/<%= customer._id %>?_method=PATCH" method="POST" class="needs-validation"

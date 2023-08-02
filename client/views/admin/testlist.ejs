@@ -1,0 +1,111 @@
+<% layout('/layouts/adminboilerplate') %>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-8 py-2 mt-5">
+                <div class="card ">
+                    <div class="card-header">
+
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                            Add Test</button>
+
+                    </div>
+                    <div class="card-body ">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Department Name</th>
+                                <th>Test Name</th>
+                                <th>SI Unit</th>
+                                <th>Normal Range</th>
+                                <th>Actions</th>
+                            </tr>
+
+                            <% for (let tests of allTest) { %>
+                                <tr>
+                                    <td>
+                                        <%= tests.name %>
+                                    </td>
+                                    <td>
+                                        <%= tests.test %>
+                                    </td>
+                                    <td>
+                                        <%= tests.siunit %>
+                                    </td>
+                                    <td>
+                                        <%= tests.range %>
+                                    </td>
+                                    <td>
+                                        <form action="/Test/<%= tests._id %>?_method=DELETE" method="POST">
+                                            <div class=" btn-group">
+                                                <a href="/Test/<%= tests._id %>" class="btn btn-primary">Edit</a>
+
+                                                <button class="btn btn-danger">
+                                                    Delete
+                                                </button>
+                                                <a href="/Test/<%= tests._id %>" class="btn btn-info">Test</a>
+
+                                            </div>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <% }%>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Test List</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/Test" method="POST" class="needs-validation" novalidate>
+                        <div class="row">
+                            <div class="col">
+                                <label for="departmentname">Department name</label>
+                                <input type="text" name="name" id="departmentName" class="form-control"
+                                    placeholder="Name" aria-label="departmentName" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="test">Test name</label>
+                                <input type="text" name="test" id="test" class="form-control" placeholder="Test"
+                                    aria-label="test" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="siunit">SI UNIT</label>
+                                <input type="text" name="siunit" id="siunit" class="form-control" placeholder="siunit"
+                                    aria-label="siunit" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="range">Normal Range</label>
+                                <input type="text" name="range" id="range" class="form-control" placeholder="range"
+                                    aria-label="range" required>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button> -->
+                    <button class="btn btn-primary" data-bs-dismiss=" modal">Add</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>

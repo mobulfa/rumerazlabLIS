@@ -1,0 +1,38 @@
+<% layout('/layouts/adminboilerplate') %>
+
+    <div class="container col-md-8 border mt-5">
+        <form action="/Test/<%= tesst._id %>?_method=PATCH" method="POST" class="needs-validation" novalidate>
+            <div class="row">
+                <div class="col">
+                    <label for="departmentname">Department name</label>
+                    <input type="text" name="name" id="departmentName" class="form-control" placeholder="Name"
+                        aria-label="departmentName" required value="<%= tesst.name %>">
+                </div>
+
+                <div class="col">
+                    <label for="test">Test name</label>
+                    <input type="text" name="test" id="test" class="form-control" placeholder="Test" aria-label="test"
+                        required value="<%= tesst.test %>">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="siunit">SI UNIT</label>
+                    <input type="text" name="siunit" id="siunit" class="form-control" placeholder="siunit"
+                        aria-label="siunit" required value="<%= tesst.siunit %>">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="range">Normal Range</label>
+                    <input type="text" name="range" id="range" class="form-control" placeholder="range"
+                        aria-label="range" required value="<%= tesst.range %>">
+                </div>
+            </div>
+            <button class="btn btn-primary mt-2" data-bs-dismiss=" modal">Save Changes</button>
+
+    </div>
+
+
+    </form>
+    </div>

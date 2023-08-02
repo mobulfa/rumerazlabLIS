@@ -1,32 +1,6 @@
 <% layout('/layouts/boilerplate') %>
 
-    <!-- 
-    <div class="row mt-5">
-        <div class="container bg-info bg-gradient col-4 offset-4 rounded">
-            <h2 class="text-center mt-2">Login</h2>
-            <div class="col-sm-8 offset-2">
-                <form action="" method="POST" class="needs-validation" novalidate>
-                    <div class="form-floating mb-3">
-                        <input type="email" class="form-control" name="email" id="floatingInput"
-                            placeholder="name@example.com" required>
-                        <label for="floatingInput">Email address</label>
-                    </div>
-                    <div class="form-floating">
-                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
-                            required>
-                        <label for="floatingPassword">Password</label>
-                    </div>
-                    <div class="button-control btn-group m-2 ms-auto" role="group" aria-label="Action Button">
-                        <a href="/Home" class="btn btn-danger bg-gradient">Cancel</a>
-                        <button class="btn btn-success bg-gradient"> Login</button>
-                    </div>
-                </form> -->
-    <!-- <label class="mb-3" for="signup">No Account Yet?
-                    <span><a href="/Sign-up">Signup Here</a></label></span> -->
-    <!-- </div>
 
-        </div>
-    </div> -->
     <section class="background-radial-gradient overflow-hidden">
 
         <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
@@ -44,7 +18,7 @@
 
                     <div class="card bg-glass">
                         <div class="card-body px-4 py-5 px-md-5">
-                            <form action="/login" method="POST">
+                            <form action="/Admin" method="POST">
 
                                 <div class="row">
                                     <center>
@@ -54,8 +28,8 @@
 
                                 <!-- Email input -->
                                 <div class="form-outline mb-4">
-                                    <input type="email" name="email" id="form3Example3" class="form-control" />
-                                    <label class="form-label" for="form3Example3">Email address</label>
+                                    <input type="text" name="username" id="form3Example3" class="form-control" />
+                                    <label class="form-label" for="form3Example3">UserName</label>
                                 </div>
 
                                 <!-- Password input -->
@@ -69,12 +43,6 @@
                                 <button type="submit" class="btn btn-primary btn-block mb-4">
                                     Log In
                                 </button>
-
-                                <!-- Register buttons -->
-                                <!-- <div class="text-center">
-                                    <p>Don't have an account yet? <a href="/signup">Sign up</a></p>
-
-                                </div> -->
                             </form>
                         </div>
                     </div>

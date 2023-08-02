@@ -17,8 +17,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/lis')
 
 //Client Views
 exports.landingPage = catchAsync(async (req, res) => {
-    // const customers = await customer.find();
-    // res.status(200).render('customer/index', { customers });
     res.status(200).render('customer/index');
 })
 
@@ -39,11 +37,24 @@ exports.signupPage = catchAsync(async (req, res) => {
 })
 
 //ADMIN VIEWS
+exports.login = catchAsync(async (req, res) => {
+    res.status(200).render('admin/login')
+})
+
 exports.adminPage = catchAsync(async (req, res) => {
     const countCustomer = await Customer.count({});
     const countTest = await Testlist.count({});
-    res.status(200).render('admin/index', { countCustomer, countTest });
+    if (req.body.username === 'admin' && req.body.password === 'password') {
+        res.status(200).render('admin/index', { countTest, countCustomer });
+    } else {
+        res.status(200).render('admin/login');
+    }
+})
 
+exports.dashboard = catchAsync(async (req, res) => {
+    const countCustomer = await Customer.count({});
+    const countTest = await Testlist.count({});
+    res.render('admin/index', { countTest, countCustomer })
 })
 
 exports.testTypePage = catchAsync(async (req, res) => {
@@ -57,9 +68,8 @@ exports.listCustomerPage = catchAsync(async (req, res) => {
 
 exports.addCustomer = catchAsync(async (req, res) => {
     const newCustomer = new Customer(req.body);
-    // console.log(req.body);
     await newCustomer.save();
-    res.redirect('/Allcustomer')
+    res.redirect(`/Processcustomer/${newCustomer._id}`)
 
 })
 
@@ -87,3 +97,55 @@ exports.deleteCustomer = catchAsync(async (req, res) => {
 
 
 })
+
+//Test CRUD
+
+exports.test = catchAsync(async (req, res) => {
+    const allTest = await Testlist.find({});
+    res.status(200).render('admin/testlist', { allTest });
+})
+
+exports.addTest = catchAsync(async (req, res) => {
+    const newTest = new Testlist(req.body);
+    await newTest.save();
+    res.redirect('/Test');
+})
+
+exports.editTest = catchAsync(async (req, res) => {
+    const testID = req.params.id;
+    const tesst = await Testlist.findById(testID);
+
+
+    if (tesst) {
+        res.status(200).render('admin/showtest', { tesst })
+    }
+
+})
+
+exports.updateTest = catchAsync(async (req, res) => {
+    const testID = req.params.id;
+    const tesst = await Testlist.findByIdAndUpdate(testID, { ...req.body });
+    // , {runValidators:true, new:true});
+    res.redirect(`/Test`);
+
+})
+
+exports.deleteTest = catchAsync(async (req, res) => {
+    const testID = req.params.id;
+    await Testlist.findByIdAndDelete(testID);
+    res.redirect('/Test')
+})
+
+//Process TEST CRUD
+
+exports.processCustomer = catchAsync(async (req, res) => {
+    const customerID = await Customer.findById(req.params.id);
+    var caseNo = Math.floor(Math.random() * 900000);
+    const allTest = await Testlist.find({});
+    // return console.log(customerID.fname)
+
+    res.status(200).render('admin/process', { customerID, allTest, caseNo });
+
+
+})
+
