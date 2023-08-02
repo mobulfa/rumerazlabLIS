@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ProcessedTest = new Schema({
-    caseno: Number,
+
     fname: String,
     lname: String,
     mname: String,
@@ -17,9 +17,6 @@ const ProcessedTest = new Schema({
         type: Number,
         min: 11
     },
-    department: String,
-    test: String,
-    result: String,
-    range: String
+    caseno: Number
 })
 module.exports = mongoose.model('Processedtest', ProcessedTest);

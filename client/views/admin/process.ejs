@@ -1,5 +1,46 @@
 <% layout('/layouts/adminboilerplate') %>
-    <form action="/">
+
+
+    <!-- Test INFO -->
+    <div class="container mt-5">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Select Test
+        </button>
+
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Select Test</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/Processcustomer" method="POST">
+                        <select name="test" id="test">
+                            <% for (let tests of allTest) {%>
+
+                                <option value="<%= tests.test %>">
+                                    <%= tests.test %>
+                                </option>
+
+                                <% } %>
+                        </select>
+
+                        <div class="modal-footer">
+                            <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button> -->
+                            <button class="btn btn-primary" data-bs-dismiss=" modal">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <form action="/Processcustomer" method="POST">
 
         <div class="container mt-4">
             <div class="col-4">
@@ -16,34 +57,14 @@
             <label for="Age">Age:</label>
             <input type="text" disabled value="<%= customerID.age %>" />
 
-
-            <form action="/Processcustomer" method="POST">
-                <div class="row col-md-4">
-                    <label for="test">Select Test</label>
-                    <select name="test" id="test">
-                        <% for (let tests of allTest) {%>
-                            <option value="<%= tests.test %>">
-                                <%= tests.test %>
-                            </option>
-                            <% } %>
-                    </select>
-                    <button class="btn btn-primary">Add Test</button>
-                </div>
-
-            </form>
-
-
-
-            <!-- <div class="row mt-5">
-                <label for="name">Customer Name</label>
-            </div> -->
-            <div class="row mt-2 col-4">
+            <div class="row mt-2 col-8">
                 <table class="table table-bordered">
                     <tr>
                         <th>Department</th>
                         <th>Test Type</th>
-                        <th>Result</th>
                         <th>Normal Range</th>
+                        <th>Result</th>
+                        <th>Actions</th>
 
                     </tr>
 
@@ -52,6 +73,9 @@
                         <td></td>
                         <td></td>
                         <td></td>
+                        <td>
+                            <a href="/" class="btn btn-info">Add Result</a>
+                        </td>
 
                     </tr>
 

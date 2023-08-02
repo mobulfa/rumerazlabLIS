@@ -142,10 +142,17 @@ exports.processCustomer = catchAsync(async (req, res) => {
     const customerID = await Customer.findById(req.params.id);
     var caseNo = Math.floor(Math.random() * 900000);
     const allTest = await Testlist.find({});
-    // return console.log(customerID.fname)
-
     res.status(200).render('admin/process', { customerID, allTest, caseNo });
+})
+
+exports.addCustomerTest = catchAsync(async (req, res) => {
+    const testID = await Testlist.findById(req.params.id);
 
 
+})
+
+exports.savetest = catchAsync(async (req, res) => {
+    const testID = await Testlist.findById(req.params.id);
+    console.log(testID)
 })
 

@@ -43,13 +43,9 @@ router.delete('/Test/:id', lisController.deleteTest);
 //Process Customer Test
 router.get('/Processcustomer/:id', lisController.processCustomer);
 
+router.post('/Processcustomer', lisController.addCustomerTest);
 
-
-
-
-
-
-
+router.post('/SaveTest', lisController.savetest);
 
 
 module.exports = router;
