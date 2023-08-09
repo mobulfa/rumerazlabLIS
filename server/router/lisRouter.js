@@ -47,13 +47,13 @@ router.delete('/Test/:id', lisController.deleteTest);
 //Process Customer Test
 router.post('/Processcustomer/:id/savetest', lisController.addCustomerTest);
 router.get('/Processcustomer/:id', lisController.processCustomer);
-router.get('/Processcustomer/:id/updateresult/:resultid', lisController.editResult);
-router.patch('/Processcustomer/:id/updateresult/:resultid', lisController.updateResult);
 
 
 
 //VIEW CUSTOMER RESULT ROUTE
 router.get('/ViewResult', lisController.viewResult);
+router.get('/Processcustomer/:id/updateresult/:resultid', lisController.editResult);
+router.patch('/Processcustomer/:id/updateresult/:resultid', lisController.updateResult);
 
 
 

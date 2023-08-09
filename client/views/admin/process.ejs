@@ -108,8 +108,9 @@
                 </div>
                 <div class="modal-body">
                     <form action="/Processcustomer/<%= customerID._id %>/savetest" method="POST">
-                        <input type="text" name="tests[testref]" class="form-control" value="<%= testref%>">
-                        <input type="text" name="tests[caseno]" class="form-control" value="<%= customerID.caseno%>">
+                        <input type="text" name="tests[testref]" class="form-control" value="<%= testref%>" hidden>
+                        <input type="text" name="tests[caseno]" class="form-control" value="<%= customerID.caseno%>"
+                            hidden>
                         <div class="mb-3">
 
                             <select name="tests[name]" id="test" class="form-control">

@@ -136,6 +136,14 @@ exports.addCustomerTest = catchAsync(async (req, res) => {
 
 })
 
+
+
+
+//------------------------VIEW RESULT ROUTE Route CallBacks
+exports.viewResult = catchAsync(async (req, res) => {
+    res.render('customer/viewResultForm');
+})
+
 exports.editResult = catchAsync(async (req, res) => {
     const customerId = await Customer.findById(req.params.id);
     const resultID = await Processedtest.findById(req.params.resultid);
@@ -144,21 +152,11 @@ exports.editResult = catchAsync(async (req, res) => {
 })
 
 exports.updateResult = catchAsync(async (req, res) => {
-    const customerId = await Customer.findById(req.params.id);
+    const customerId = req.params.id;
     const resultID = req.params.resultid;
-    const result = new Processedtest(req.body)
-    return console.log(result)
-    resultID.result.push(result);
-    const result2 = await Processedtest.findByIdAndUpdate(resultID, { ...req.body });
-    res.redirect(`/Processcustomer/${customerId._id}`);
+    const updateTestResult = await Processedtest.findByIdAndUpdate(resultID, { ...req.body.tests });
+    res.redirect(`/Processcustomer/${customerId}`)
 })
-
-
-//------------------------VIEW RESULT ROUTE Route CallBacks
-exports.viewResult = catchAsync(async (req, res) => {
-    res.render('customer/viewResultForm');
-})
-
 //-------------------------Test CRUD Route CallBacks
 
 exports.test = catchAsync(async (req, res) => {
