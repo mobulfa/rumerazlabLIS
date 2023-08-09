@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const CustomerList = new Schema({
-    caseno: Number,
+    caseno: String,
     fname: String,
     lname: String,
     mname: String,
@@ -19,6 +19,16 @@ const CustomerList = new Schema({
     },
     email: String,
     gender: String,
-    birthdate: String
+    birthdate: String,
+    testID: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Processedtest',
+    }]
+
+    // caseno: [{
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Processedtest'
+    // }]
+
 })
 module.exports = mongoose.model('Customers', CustomerList);

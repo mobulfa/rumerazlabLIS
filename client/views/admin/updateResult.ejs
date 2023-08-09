@@ -1,0 +1,9 @@
+<% layout('/layouts/adminboilerplate') %>
+
+    <form action="/Processcustomer/<%= customerId._id%>/updateresult/<%= resultID._id %>?_method=PATCH" method="POST">
+        <div class="col-6 mt-5 mb-3">
+            <input name="tests[result]" id="result" class="form-control" placeholder="Enter Result Here">
+
+            <button class="btn btn-primary" data-bs-dismiss=" modal">Save Result</button>
+        </div>
+    </form>

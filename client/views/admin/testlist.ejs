@@ -21,37 +21,39 @@
                                 <th>Normal Range</th>
                                 <th>Actions</th>
                             </tr>
+                            <tbody class="table-group-divider">
+                                <% for (let tests of allTest) { %>
+                                    <tr>
+                                        <td>
+                                            <%= tests.name %>
+                                        </td>
+                                        <td>
+                                            <%= tests.test %>
+                                        </td>
+                                        <td>
+                                            <%= tests.siunit %>
+                                        </td>
+                                        <td>
+                                            <%= tests.range %>
+                                        </td>
+                                        <td>
+                                            <form action="/Test/<%= tests._id %>?_method=DELETE" method="POST">
+                                                <div class=" btn-group">
+                                                    <a href="/Test/<%= tests._id %>" class="btn btn-primary">Edit</a>
 
-                            <% for (let tests of allTest) { %>
-                                <tr>
-                                    <td>
-                                        <%= tests.name %>
-                                    </td>
-                                    <td>
-                                        <%= tests.test %>
-                                    </td>
-                                    <td>
-                                        <%= tests.siunit %>
-                                    </td>
-                                    <td>
-                                        <%= tests.range %>
-                                    </td>
-                                    <td>
-                                        <form action="/Test/<%= tests._id %>?_method=DELETE" method="POST">
-                                            <div class=" btn-group">
-                                                <a href="/Test/<%= tests._id %>" class="btn btn-primary">Edit</a>
+                                                    <button class="btn btn-danger">
+                                                        Delete
+                                                    </button>
+                                                    <a href="/Test/<%= tests._id %>" class="btn btn-info">Test</a>
 
-                                                <button class="btn btn-danger">
-                                                    Delete
-                                                </button>
-                                                <a href="/Test/<%= tests._id %>" class="btn btn-info">Test</a>
+                                                </div>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <% }%>
 
-                                            </div>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <% }%>
 
+                            </tbody>
                         </table>
                     </div>
                 </div>

@@ -25,10 +25,14 @@ router.get('/Test', lisController.test);
 
 
 //ADMIN CUSTOMER CRUD
-router.post('/Allcustomer', lisController.addCustomer);
+
+router.post('/Allcustomer', lisController.saveCustomer);
+router.get('/Allcustomer/new', lisController.addCustomer)
 router.get('/Allcustomer/:id', lisController.editCustomer);
 router.patch('/Allcustomer/:id', lisController.updateCustomer);
 router.delete('/Allcustomer/:id', lisController.deleteCustomer);
+
+
 
 //ADMIN TEST CRUD
 router.post('/Test', lisController.addTest);
@@ -41,11 +45,19 @@ router.delete('/Test/:id', lisController.deleteTest);
 
 
 //Process Customer Test
+router.post('/Processcustomer/:id/savetest', lisController.addCustomerTest);
 router.get('/Processcustomer/:id', lisController.processCustomer);
+router.get('/Processcustomer/:id/updateresult/:resultid', lisController.editResult);
+router.patch('/Processcustomer/:id/updateresult/:resultid', lisController.updateResult);
 
-router.post('/Processcustomer', lisController.addCustomerTest);
 
-router.post('/SaveTest', lisController.savetest);
+
+//VIEW CUSTOMER RESULT ROUTE
+router.get('/ViewResult', lisController.viewResult);
+
+
+
+
 
 
 module.exports = router;
