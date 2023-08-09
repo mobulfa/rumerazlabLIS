@@ -6,6 +6,15 @@
                 <input type="text" class="form-control" placeholder="Input Reference No">
                 <h3>Result Form</h3>
 
+        <form action="/action_page.php" id="numform"
+        oninput="x.value=parseInt(a.value)+parseInt(b.value)">
+        <input type="range" id="a" name="a" value="50">
+        + <input type="number" id="b" name="b" value="25">
+        <input type="submit">
+        </form>
+
+<output form="numform" id="x" name="x" for="a+b"></output>
+
             </div>
         </div>
     </div>
