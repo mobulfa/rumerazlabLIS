@@ -1,0 +1,62 @@
+<% layout('/layouts/adminboilerplate') %>
+
+    <div class="card col-8 offset-1 mt-4">
+        <div class="card-header">
+            <h4> New User Form</h4>
+        </div>
+        <form action="">
+            <div class="car-body p-3">
+                <div class="row g-2 alignitems-center input-group">
+                    <div class="col-auto">
+                        <label for="fname" class="col-form-label">First Name: </label>
+
+                        <input type="text" name="fname" id="fname" class="form-control" placeholder="Enter FirstName">
+                    </div>
+                    <div class="col-auto">
+                        <label for="mname" class="col-form-label">Middle Name: </label>
+                        <input type="text" name="mname" id="mname" class="form-control" placeholder="Enter MiddleName">
+                    </div>
+                    <div class="col-auto">
+                        <label for="lname" class="col-form-label">Last Name: </label>
+                        <input type="text" name="lname" id="lname" class="form-control" placeholder="Enter Lastname">
+                    </div>
+                    <div class="col-auto">
+                        <label for="role" class="col-form-label">Role:</label>
+                        <Select name="role" id="role" class="form-control ">
+                            <option value="">Select Role</option>
+                            <option value="admin">Administrator</option>
+                            <option value="employee">Employee</option>
+                        </Select>
+                    </div>
+                    <div class="row g-2 alignitems-center input-group">
+
+                        <div class="col-md-4">
+                            <label for="licensedno" class="col-form-label">Licensedno:</label>
+                            <input type="text" name="licensedno" id="licensedno" class="form-control"
+                                placeholder="Enter License Number">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="contactno" class="col-form-label">Contact No:</label>
+                            <input type="number" name="contactno" id="contactno" class="form-control"
+                                placeholder="09127686100">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="email" class="col-form-label">Email Address:</label>
+                            <input type="email" name="email" id="email" class="form-control"
+                                placeholder="mail@mail.com">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="card-footer">
+                <div class="btn-group">
+                    <a href="" class="btn btn-success">Save</a>
+                    <a href="" class="btn  btn-danger">Cancel</a>
+                </div>
+
+            </div>
+        </form>
+
+    </div>

@@ -119,7 +119,8 @@ exports.deleteCustomer = catchAsync(async (req, res) => {
 exports.processCustomer = catchAsync(async (req, res) => {
     const customerID = await Customer.findById(req.params.id).populate('testID');
     const allTest = await Testlist.find({});
-    const testref = 'Lab-' + month + '-' + day + '-' + year + '-' + randNum;
+    const months = month + 1;
+    const testref = 'Lab-' + months + '-' + day + '-' + year + '-' + randNum;
     res.status(200).render('admin/process', { customerID, allTest, testref });
 })
 
@@ -197,4 +198,13 @@ exports.deleteTest = catchAsync(async (req, res) => {
     const testID = req.params.id;
     await Testlist.findByIdAndDelete(testID);
     res.redirect('/Test')
+})
+
+//------------USER MANAGER CALLBACK ROUTES
+exports.userlist = catchAsync(async (req, res) => {
+    res.render('admin/userlist');
+})
+
+exports.userForm = catchAsync(async (req, res) => {
+    res.render('admin/new-userForm');
 })

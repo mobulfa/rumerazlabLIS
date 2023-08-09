@@ -55,6 +55,9 @@ router.get('/ViewResult', lisController.viewResult);
 router.get('/Processcustomer/:id/updateresult/:resultid', lisController.editResult);
 router.patch('/Processcustomer/:id/updateresult/:resultid', lisController.updateResult);
 
+//USER MANAGER ROUTES
+router.get('/Usermanager', lisController.userlist);
+router.get('/Usermanager/new-userForm', lisController.userForm);
 
 
 
