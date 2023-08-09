@@ -16,7 +16,7 @@
         <div class="col-4">
 
             <label for="CaseNo">CaseNo: </label>
-            <input type="text" name="CaseNo" class="form-control" value="<%= customerID.caseno%>" disabled>
+            <input type="text" name="CaseNo" class="form-control" value="<%=customerID.caseno%>" disabled>
 
             <button type="button" class="btn btn-primary col-12 mt-2" data-bs-toggle="modal"
                 data-bs-target="#exampleModal">
@@ -48,7 +48,7 @@
                     <div class="card-body">
                         <table class="table table-bordered text-center ">
                             <tr>
-                                <th>Case No</th>
+                                <th>Reference No</th>
                                 <th>Department</th>
                                 <th>Test Type</th>
                                 <th>Normal Range</th>
@@ -60,7 +60,7 @@
                                 <% for (let info of customerID.testID) {%>
                                     <tr>
                                         <td>
-                                            <%= info.caseno%>
+                                            <%= info.testref%>
                                         </td>
                                         <td>
                                             <%= info.name%>
@@ -108,9 +108,10 @@
                 </div>
                 <div class="modal-body">
                     <form action="/Processcustomer/<%= customerID._id %>/savetest" method="POST">
-                        <input type="text" name="tests[caseno]" class="form-control" value="<%= customerID.caseno%>"
-                            hidden>
+                        <input type="text" name="tests[testref]" class="form-control" value="<%= testref%>">
+                        <input type="text" name="tests[caseno]" class="form-control" value="<%= customerID.caseno%>">
                         <div class="mb-3">
+
                             <select name="tests[name]" id="test" class="form-control">
                                 <option selected value="">Select Test</option>
                                 <% for (let tests of allTest) {%>

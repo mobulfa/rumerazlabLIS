@@ -1,4 +1,4 @@
-//Imports
+//---------------------Imports
 const mongoose = require('mongoose');
 const Customer = require('../../models/customer');
 const Testlist = require('../../models/testlist');
@@ -10,16 +10,10 @@ var date = new Date();
 var month = date.getMonth();
 var year = date.getFullYear();
 var day = date.getDay();
+var randNum = Math.floor(Math.random() * 900000);
 
 
-
-
-
-
-
-
-
-//DB CONNECTion
+//------------------DB CONNECTion
 mongoose.connect('mongodb://127.0.0.1:27017/lis')
     .then(() => {
         console.log('Connection is OPEN');
@@ -29,7 +23,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/lis')
     })
 
 
-//Client Views
+//---------------------Client Views Route CallBacks
 exports.landingPage = catchAsync(async (req, res) => {
     res.status(200).render('customer/index');
 })
@@ -50,7 +44,7 @@ exports.signupPage = catchAsync(async (req, res) => {
     res.status(200).render('customer/signupForm');
 })
 
-//ADMIN VIEWS
+//----------------------ADMIN VIEWS Route CallBacks
 exports.login = catchAsync(async (req, res) => {
     res.status(200).render('admin/login')
 })
@@ -77,18 +71,15 @@ exports.testTypePage = catchAsync(async (req, res) => {
 
 exports.listCustomerPage = catchAsync(async (req, res) => {
     const allCustomer = await Customer.find({});
+
     res.status(200).render('admin/customerlist', { allCustomer });
 })
 
 
-//CUSTOMER CRUD
+//--------------------CUSTOMER CRUD Route CallBacks
 exports.saveCustomer = catchAsync(async (req, res) => {
     const newCustomer = new Customer(req.body);
-    //     return console.log(newCustomer)
-    // const testID = new newProcessedTest(req.body);
-    // testID.customerid.push(newCustomer);
     await newCustomer.save();
-    // await testID.save();
     res.redirect(`/Processcustomer/${newCustomer._id}`)
 
 })
@@ -109,7 +100,6 @@ exports.editCustomer = catchAsync(async (req, res) => {
 exports.updateCustomer = catchAsync(async (req, res) => {
     const customerId = req.params.id;
     const customer = await Customer.findByIdAndUpdate(customerId, { ...req.body });
-    // , {runValidators:true, new:true});
     res.redirect(`/Allcustomer`);
 
 })
@@ -122,7 +112,54 @@ exports.deleteCustomer = catchAsync(async (req, res) => {
 
 })
 
-//Test CRUD
+
+
+//-----------------------------Process TEST CRUD
+
+exports.processCustomer = catchAsync(async (req, res) => {
+    const customerID = await Customer.findById(req.params.id).populate('testID');
+    const allTest = await Testlist.find({});
+    const testref = 'Lab-' + month + '-' + day + '-' + year + '-' + randNum;
+    res.status(200).render('admin/process', { customerID, allTest, testref });
+})
+
+exports.addCustomerTest = catchAsync(async (req, res) => {
+
+    const customerId = await Customer.findById(req.params.id);
+    const newTest = new Processedtest(req.body.tests);
+    customerId.testID.push(newTest);
+
+    await newTest.save();
+    await customerId.save();
+
+    res.redirect(`/Processcustomer/${customerId._id}`)
+
+})
+
+exports.editResult = catchAsync(async (req, res) => {
+    const customerId = await Customer.findById(req.params.id);
+    const resultID = await Processedtest.findById(req.params.resultid);
+    res.render('admin/updateResult', { customerId, resultID });
+
+})
+
+exports.updateResult = catchAsync(async (req, res) => {
+    const customerId = await Customer.findById(req.params.id);
+    const resultID = req.params.resultid;
+    const result = new Processedtest(req.body)
+    return console.log(result)
+    resultID.result.push(result);
+    const result2 = await Processedtest.findByIdAndUpdate(resultID, { ...req.body });
+    res.redirect(`/Processcustomer/${customerId._id}`);
+})
+
+
+//------------------------VIEW RESULT ROUTE Route CallBacks
+exports.viewResult = catchAsync(async (req, res) => {
+    res.render('customer/viewResultForm');
+})
+
+//-------------------------Test CRUD Route CallBacks
 
 exports.test = catchAsync(async (req, res) => {
     const allTest = await Testlist.find({});
@@ -163,52 +200,3 @@ exports.deleteTest = catchAsync(async (req, res) => {
     await Testlist.findByIdAndDelete(testID);
     res.redirect('/Test')
 })
-
-//Process TEST CRUD
-
-exports.processCustomer = catchAsync(async (req, res) => {
-    const customerID = await Customer.findById(req.params.id).populate('testID');
-    const allTest = await Testlist.find({});
-
-    // const testname = req.body.test;
-    // const testinfo = await Testlist.find({ test: estname });
-    res.status(200).render('admin/process', { customerID, allTest });
-})
-
-exports.addCustomerTest = catchAsync(async (req, res) => {
-
-    const customerId = await Customer.findById(req.params.id);
-    const newTest = new Processedtest(req.body.tests);
-    customerId.testID.push(newTest);
-
-    await newTest.save();
-    await customerId.save();
-
-    res.redirect(`/Processcustomer/${customerId._id}`)
-
-})
-
-exports.editResult = catchAsync(async (req, res) => {
-    const customerId = await Customer.findById(req.params.id);
-    const resultID = await Processedtest.findById(req.params.resultid);
-    res.render('admin/updateResult', { customerId, resultID });
-
-})
-
-exports.updateResult = catchAsync(async (req, res) => {
-    const customerId = await Customer.findById(req.params.id);
-    const resultID = req.params.resultid;
-    const result = new Processedtest(req.body)
-    return console.log(result)
-    resultID.result.push(result);
-    const result2 = await Processedtest.findByIdAndUpdate(resultID, { ...req.body });
-    res.redirect(`/Processcustomer/${customerId._id}`);
-})
-
-
-//VIEW RESULT ROUTE
-exports.viewResult = catchAsync(async (req, res) => {
-    res.render('customer/viewResultForm');
-})
-
-

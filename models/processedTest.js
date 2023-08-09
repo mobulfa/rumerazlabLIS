@@ -10,7 +10,8 @@ const ProcessedTest = new Schema({
     testtype: String,
     range: String,
     result: String,
-    caseno: String
+    caseno: String,
+    testref: String
 
 })
 module.exports = mongoose.model('Processedtest', ProcessedTest);
