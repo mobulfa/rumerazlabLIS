@@ -70,18 +70,15 @@ exports.testTypePage = catchAsync(async (req, res) => {
 })
 
 exports.listCustomerPage = catchAsync(async (req, res) => {
-
-
     if (req.query) {
         const fname = req.query.fname;
         const lname = req.query.lname;
-
 
         if (req.query.fname && req.query.lname) {
             const allCustomer = await Customer.find({ fname: `${fname}`, lname: `${lname}` });
 
             if (!allCustomer) {
-                req.flash('success', 'You hace added a new Listing');
+                req.flash('success', 'No Found Record');
             } else {
                 res.status(200).render('admin/customerlist', { allCustomer });
             }
@@ -165,7 +162,23 @@ exports.addCustomerTest = catchAsync(async (req, res) => {
 
 //------------------------VIEW RESULT ROUTE Route CallBacks
 exports.viewResult = catchAsync(async (req, res) => {
-    res.render('customer/viewResultForm');
+
+    if (req.query) {
+
+
+        if (req.query.caseno) {
+            const caseno = req.query.caseno;
+            const customerCaseno = await Customer.find({ caseno: `${caseno}` });
+            const testCaseno = await Processedtest.find({ caseno: `${caseno}` });
+            res.status(200).render('customer/viewResultForm', { customerCaseno, testCaseno });
+
+        } if (!req.query.caseno) {
+            res.status(200).render('customer/viewResultForm');
+        }
+    } if (!req.query) {
+        res.render('customer/viewResultForm');
+
+    }
 })
 
 exports.editResult = catchAsync(async (req, res) => {

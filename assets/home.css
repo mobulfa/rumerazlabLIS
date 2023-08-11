@@ -110,11 +110,11 @@
      transition: 0.5s;
  }
 
- .card:hover {
+ /* .card:hover {
      color: rgb(255, 252, 252);
- }
+ } */
 
- .card::before {
+ /* .card::before {
      content: "";
      position: absolute;
      left: 100%;
@@ -124,12 +124,12 @@
      height: 100%;
      transition: 0.5s;
      z-index: -1;
- }
+ } */
 
- .card:hover::before {
+ /* .card:hover::before {
      left: 0%;
      color: white;
- }
+ } */
 
  h3 {
      font-size: 18px;
