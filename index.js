@@ -68,9 +68,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
 //EXCECUTE ROUTER
-app.use('', customerRouter);
+app.use('/', customerRouter);
 
-app.get('/Home')
 
 connDB().then(() => {
     app.listen(PORT, () => {
