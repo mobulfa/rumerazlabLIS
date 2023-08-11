@@ -2,27 +2,31 @@
 
     <div class="card col-8 offset-1 mt-4">
         <div class="card-header">
-            <h4> New User Form</h4>
+            <h4> Update User Form</h4>
         </div>
-        <form action="/Usermanager" method="POST" class="needs-validation" novalidate>
+        <form action="/Usermanager/<%= findUserid._id%>?_method=PATCH" method="POST" class="needs-validation"
+            novalidate>
             <div class="car-body p-3">
                 <div class="row g-2 alignitems-center input-group">
                     <div class="col-auto">
                         <label for="fname" class="col-form-label">First Name: </label>
 
-                        <input type="text" name="fname" id="fname" class="form-control" placeholder="Enter FirstName">
+                        <input type="text" name="fname" id="fname" class="form-control" value="<%= findUserid.fname %>"
+                            required>
                     </div>
                     <div class="col-auto">
                         <label for="mname" class="col-form-label">Middle Name: </label>
-                        <input type="text" name="mname" id="mname" class="form-control" placeholder="Enter MiddleName">
+                        <input type="text" name="mname" id="mname" class="form-control" value="<%= findUserid.mname %>"
+                            required>
                     </div>
                     <div class="col-auto">
                         <label for="lname" class="col-form-label">Last Name: </label>
-                        <input type="text" name="lname" id="lname" class="form-control" placeholder="Enter Lastname">
+                        <input type="text" name="lname" id="lname" class="form-control" value="<%= findUserid.lname %>"
+                            required>
                     </div>
                     <div class="col-auto">
                         <label for="role" class="col-form-label">Role:</label>
-                        <Select name="role" id="role" class="form-control ">
+                        <Select name="role" id="role" class="form-control " required>
                             <option value="">Select Role</option>
                             <option value="admin">Administrator</option>
                             <option value="employee">Employee</option>
@@ -33,28 +37,28 @@
                         <div class="col-md-4">
                             <label for="licensedno" class="col-form-label">Licensedno:</label>
                             <input type="text" name="licensedno" id="licensedno" class="form-control"
-                                placeholder="Enter License Number">
+                                value="<%= findUserid.licensedno %>" required>
                         </div>
                         <div class="col-md-4">
                             <label for="title" class="col-form-label">Title:</label>
                             <input type="text" name="title" id="title" class="form-control"
-                                placeholder="Enter Title MD/RMT">
+                                value="<%= findUserid.title %>" required>
                         </div>
                         <div class="col-md-4">
                             <label for="contactno" class="col-form-label">Contact No:</label>
                             <input type="number" name="contactno" id="contactno" class="form-control"
-                                placeholder="09127686100">
+                                value="<%= findUserid.contactno %>" required>
                         </div>
                         <div class="col-md-4">
                             <label for="email" class="col-form-label">Email Address:</label>
                             <input type="email" name="email" id="email" class="form-control"
-                                placeholder="mail@mail.com">
+                                value="<%= findUserid.email %>" required>
                         </div>
 
                         <div class="col-md-4">
                             <label for="password" class="col-form-label">Password</label>
                             <input type="password" name="password" id="password" class="form-control"
-                                placeholder="password">
+                                value="<%= findUserid.password %>" required>
                         </div>
                     </div>
                 </div>

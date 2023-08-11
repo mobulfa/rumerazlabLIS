@@ -11,7 +11,8 @@ const ProcessedTest = new Schema({
     range: String,
     result: String,
     caseno: String,
-    testref: String
+    testref: String,
+    employee: String
 
 })
 module.exports = mongoose.model('Processedtest', ProcessedTest);

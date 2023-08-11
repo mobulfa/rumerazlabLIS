@@ -11,8 +11,8 @@ const { model } = require('mongoose');
 router.get('/Home', lisController.landingPage);
 router.get('/About', lisController.aboutPage);
 router.get('/Faq', lisController.faqsPage);
-router.get('/User-Login', lisController.userLogin);
-router.get('/Sign-up', lisController.signupPage);
+// router.get('/User-Login', lisController.userLogin);
+// router.get('/Sign-up', lisController.signupPage);
 
 
 //ADMIN SIDE ROUTER
@@ -56,9 +56,11 @@ router.get('/Processcustomer/:id/updateresult/:resultid', lisController.editResu
 router.patch('/Processcustomer/:id/updateresult/:resultid', lisController.updateResult);
 
 //USER MANAGER ROUTES
+router.post('/Usermanager', lisController.saveuser);
 router.get('/Usermanager', lisController.userlist);
 router.get('/Usermanager/new-userForm', lisController.userForm);
-
+router.get('/Usermanager/:id', lisController.updateUser);
+router.patch('/Usermanager/:id', lisController.saveupdateUser);
 
 
 

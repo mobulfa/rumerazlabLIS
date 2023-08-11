@@ -1,6 +1,6 @@
 <% layout('/layouts/adminboilerplate') %>
 
-    <div class="card mt-3">
+    <div class="card mt-3 col-md-6">
         <div class="card-header">
             <h4>User Manager</h4>
             <a href="/Usermanager/new-userForm" class="btn btn-primary">Add User</a>
@@ -11,16 +11,37 @@
                     <th>Name</th>
                     <th>Role</th>
                     <th>License</th>
-                    <th>UserName</th>
+                    <th>Title</th>
+                    <th>Email</th>
                     <th>Password</th>
+                    <th>Action</th>
                 </tr>
-                <tr>
-                    <td>Name</td>
-                    <td>Role</td>
-                    <td>License</td>
-                    <td>Username</td>
-                    <td>Password</td>
-                </tr>
+                <% for (let user of findAlluser) {%>
+                    <tr>
+                        <td>
+                            <%=user.lname%>,<%=user.fname%>
+
+                        </td>
+                        <td>
+                            <%=user.role%>
+                        </td>
+                        <td>
+                            <%=user.licensedno%>
+                        </td>
+                        <td>
+                            <%=user.title%>
+                        </td>
+                        <td>
+                            <%=user.email%>
+                        </td>
+                        <td>
+                            <%=user.password%>
+                        </td>
+                        <td>
+                            <a href="/Usermanager/<%=user._id%>">Update</a>
+                        </td>
+                    </tr>
+                    <%}%>
             </table>
         </div>
     </div>

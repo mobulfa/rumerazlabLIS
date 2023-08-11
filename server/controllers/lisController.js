@@ -4,6 +4,7 @@ const Customer = require('../../models/customer');
 const Testlist = require('../../models/testlist');
 const Processedtest = require('../../models/processedTest');
 const newProcessedTest = require('../../models/newProcessed');
+const newUser = require('../../models/user');
 const catchAsync = require('../../utils/catchAsync');
 
 var date = new Date();
@@ -13,14 +14,13 @@ var day = date.getDay();
 var randNum = Math.floor(Math.random() * 900000);
 
 
-//------------------DB CONNECTion
-mongoose.connect('mongodb://127.0.0.1:27017/lis')
-    .then(() => {
-        console.log('Connection is OPEN');
-    })
-    .catch(err => {
-        console.log(`Connection Error ${err}`);
-    })
+// mongoose.connect('mongodb://127.0.0.1:27017/lis')
+//     .then(() => {
+//         console.log('Connection is OPEN');
+//     })
+//     .catch(err => {
+//         console.log(`Connection Error ${err}`);
+//     })
 
 
 //---------------------Client Views Route CallBacks
@@ -36,13 +36,13 @@ exports.faqsPage = catchAsync(async (req, res) => {
     res.status(200).render('customer/faq');
 })
 
-exports.userLogin = catchAsync(async (req, res) => {
-    res.status(200).render('customer/login');
-})
+// exports.userLogin = catchAsync(async (req, res) => {
+//     res.status(200).render('customer/login');
+// })
 
-exports.signupPage = catchAsync(async (req, res) => {
-    res.status(200).render('customer/signupForm');
-})
+// exports.signupPage = catchAsync(async (req, res) => {
+//     res.status(200).render('customer/signupForm');
+// })
 
 //----------------------ADMIN VIEWS Route CallBacks
 exports.login = catchAsync(async (req, res) => {
@@ -55,7 +55,7 @@ exports.adminPage = catchAsync(async (req, res) => {
     if (req.body.username === 'admin' && req.body.password === 'password') {
         res.status(200).render('admin/index', { countTest, countCustomer });
     } else {
-        res.status(200).render('admin/login');
+        res.redirect('/Admin/login');
     }
 })
 
@@ -78,17 +78,21 @@ exports.listCustomerPage = catchAsync(async (req, res) => {
             const allCustomer = await Customer.find({ fname: `${fname}`, lname: `${lname}` });
 
             if (!allCustomer) {
+
                 req.flash('success', 'No Found Record');
-            } else {
-                res.status(200).render('admin/customerlist', { allCustomer });
-            }
+                res.status(200).render('admin/customerlist', { message: req.flash('success') });
+            }// } else {
+            //     res.status(200).render('admin/customerlist', { allCustomer });
+            // }
 
         } else {
             const allCustomer = await Customer.find({});
             res.status(200).render('admin/customerlist', { allCustomer });
         }
+
         if (!req.query) {
             const allCustomer = await Customer.find({});
+            return console.log(allCustomer)
             res.status(200).render('admin/customerlist', { allCustomer });
         }
     }
@@ -188,7 +192,9 @@ exports.viewResult = catchAsync(async (req, res) => {
 exports.editResult = catchAsync(async (req, res) => {
     const customerId = await Customer.findById(req.params.id);
     const resultID = await Processedtest.findById(req.params.resultid);
-    res.render('admin/updateResult', { customerId, resultID });
+    const emp = await newUser.find({});
+
+    res.render('admin/updateResult', { customerId, resultID, emp });
 
 })
 
@@ -241,10 +247,32 @@ exports.deleteTest = catchAsync(async (req, res) => {
 })
 
 //------------USER MANAGER CALLBACK ROUTES
+
+exports.saveuser = catchAsync(async (req, res) => {
+    const newuser = new newUser(req.body);
+    await newuser.save();
+    res.redirect('/Usermanager');
+})
+
 exports.userlist = catchAsync(async (req, res) => {
-    res.render('admin/userlist');
+    const findAlluser = await newUser.find({});
+
+    res.status(200).render('admin/userlist', { findAlluser });
 })
 
 exports.userForm = catchAsync(async (req, res) => {
     res.render('admin/new-userForm');
+})
+
+exports.updateUser = catchAsync(async (req, res) => {
+    const userID = req.params.id;
+    const findUserid = await newUser.findById(userID);
+    res.render('admin/updateuser', { findUserid });
+})
+
+exports.saveupdateUser = catchAsync(async (req, res) => {
+    const userID = req.params.id;
+    const user = await newUser.findByIdAndUpdate(userID, { ...req.body });
+
+    res.redirect(`/Usermanager`);
 })

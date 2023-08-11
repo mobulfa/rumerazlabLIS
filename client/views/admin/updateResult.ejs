@@ -1,9 +1,35 @@
 <% layout('/layouts/adminboilerplate') %>
 
     <form action="/Processcustomer/<%= customerId._id%>/updateresult/<%= resultID._id %>?_method=PATCH" method="POST">
-        <div class="col-6 mt-5 mb-3">
-            <input name="tests[result]" id="result" class="form-control" placeholder="Enter Result Here">
 
-            <button class="btn btn-primary" data-bs-dismiss=" modal">Save Result</button>
+        <div class="card col-md-8 mt-5">
+            <div class="card-header">
+                <h4>
+                    Set Result Here
+                </h4>
+            </div>
+
+            <div class="col-md-6 m-auto mt-4">
+                <input name="tests[result]" id="result" class="form-control" placeholder="Enter Result Here">
+            </div>
+            <div class="col-6 m-auto mt-2">
+                <label for="">Performed By:</label>
+                <select name="tests[employee]" id="employee" class="form-control" required>
+                    <option value="">Select Employee</option>
+                    <% for (let empl of emp) {%>
+                        <option value="<%= empl.lname%>, <%= empl.fname%>/ <%=empl.title%> ">
+                            <%= empl.lname%>, <%= empl.fname%>
+                                    <%=empl.title%>
+                        </option>
+                        <%}%>
+                </select>
+            </div>
+            <div class="col-6 m-auto mb-3 mt-2">
+                <button class="btn btn-primary" data-bs-dismiss=" modal">Save Result</button>
+            </div>
         </div>
+
+
+
+
     </form>

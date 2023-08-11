@@ -28,9 +28,9 @@ myModal.addEventListener('shown.bs.modal', () => {
 
 
 const button = document.getElementById('searchbtn')
-const form = document.querySelector('#search')
+const form1 = document.querySelector('#search')
 
-form.addEventListener('submit', async function (e) {
+form1.addEventListener('submit', async function (e) {
     const allLetters = /^[A-Za-z]+$/;
     const name = document.getElementById('name')
     const address = document.getElementById('address')
@@ -41,6 +41,8 @@ form.addEventListener('submit', async function (e) {
     name.innerHTML = customerCaseno.fname
 
 
-})
+});
+
+
 
 

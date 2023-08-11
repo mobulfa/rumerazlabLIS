@@ -8,7 +8,7 @@
         </div>
         <form action="/ViewResult" method="GET" class="" id="search">
             <div class="input-group">
-                <input type="text" name="caseno" id="caseno" class="form-control" placeholder="Input Reference No" />
+                <input type="text" name="caseno" id="caseno" class="form-control" placeholder="Input Case No" />
                 <button class="btn btn-warning input-group-text" id="searchbtn">Search</button>
             </div>
         </form>
@@ -22,7 +22,7 @@
                 </div>
                 <% if (customerCaseno===null) {%>
                     <h4 class="text-center">
-                        No record Found
+                        No record Found! Please Enter Your Case Number First!
                     </h4>
                     <% } else {%>
 
@@ -63,7 +63,7 @@
                                     <th>Test Type</th>
                                     <th>Normal Range</th>
                                     <th>Result Range</th>
-                                    <th>Action</th>
+                                    <th>Performed By</th>
                                 </tr>
                                 <% for(let test of testCaseno) {%>
                                     <tr>
@@ -82,10 +82,13 @@
                                         <td>
                                             <%= test.result %>
                                         </td>
-
+                                        <td>
+                                            <%= test.employee %>
+                                        </td>
+                                        <!-- 
                                         <td>
                                             <a href="" class="btn btn-info btn-sm">Print Result</a>
-                                        </td>
+                                        </td> -->
 
                                     </tr>
                                     <% }%>

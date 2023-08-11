@@ -2,16 +2,33 @@ if (process.env.NODE_ENV !== "production") {
     require("dotenv").config()
 }
 
+
 const express = require('express');
 const path = require('path');
 const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate');
 const ExpressError = require('./utils/expressError');
-
+const mongoose = require('mongoose');
 const session = require('express-session');
 const flash = require('connect-flash');
+const port = process.env.PORT || 3000;
 
 const app = express();
+
+mongoose.set('strictQuery', false);
+
+
+//------------------DB CONNECTion
+const connDB = async () => {
+    try {
+        const conn = await mongoose.connect(process.env.MONGO_URI)
+        console.log(`MongoDB Connected: ${conn.connection.host}`);
+    } catch (error) {
+        console.log(error);
+        process.exit(1);
+
+    }
+}
 
 //REQUIRE ROUTERS
 const customerRouter = require('./server/router/lisRouter');
@@ -52,6 +69,8 @@ app.use(methodOverride('_method'));
 //EXCECUTE ROUTER
 app.use('', customerRouter);
 
-app.listen(8080, () => {
-    console.log('Server is Up and Running on PORT: 8080');
-})
+connDB().then(() => {
+    app.listen(port, () => {
+        console.log('Server is Up and Running on PORT: 8080');
+    })
+});
