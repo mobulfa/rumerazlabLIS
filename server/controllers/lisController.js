@@ -70,9 +70,32 @@ exports.testTypePage = catchAsync(async (req, res) => {
 })
 
 exports.listCustomerPage = catchAsync(async (req, res) => {
-    const allCustomer = await Customer.find({});
 
+
+    if (req.query) {
+        const fname = req.query.fname;
+        const lname = req.query.lname;
+
+
+        if (req.query.fname && req.query.lname) {
+            const allCustomer = await Customer.find({ fname: `${fname}`, lname: `${lname}` });
+
+            if (!allCustomer) {
+                req.flash('success', 'You hace added a new Listing');
+            } else {
+                res.status(200).render('admin/customerlist', { allCustomer });
+            }
+
+        } else {
+            const allCustomer = await Customer.find({});
+            res.status(200).render('admin/customerlist', { allCustomer });
+        }
+
+    }
+    const allCustomer = await Customer.find({});
     res.status(200).render('admin/customerlist', { allCustomer });
+
+
 })
 
 

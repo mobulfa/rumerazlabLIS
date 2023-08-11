@@ -9,11 +9,12 @@
         <div class="card">
             <div class="card-header">
                 <h5>Patient List</h5>
+
             </div>
             <div class="card-body">
 
-                <form action="">
-                    <div class="row g-3 alignitems-center">
+                <form action='\Allcustomer' method="GET" class="needs-validation" novalidate>
+                    <div class="row g-2 alignitems-center">
                         <div class="col-auto">
                             <input type="text" name="fname" id="fname" placeholder="Firstname" class="form-control">
                         </div>
@@ -25,8 +26,6 @@
 
                         </div>
                     </div>
-
-
                 </form>
 
                 <br>
@@ -43,7 +42,8 @@
                         <th>Actions</th>
                     </tr>
                     <tbody class="table-group-divider">
-                        <% for (let customers of allCustomer) {%>
+
+                        <% for (let customers of allCustomer){%>
                             <tr>
                                 <!-- <td></td> -->
                                 <td>
@@ -86,6 +86,7 @@
                                 </td>
                             </tr>
                             <% } %>
+
                     </tbody>
 
                 </table>
@@ -94,5 +95,3 @@
         <div class="container m-3 rounded table-responsive">
         </div>
     </div>
-
-    <!-- MODAL ADD CUSTOMER FORM  -->

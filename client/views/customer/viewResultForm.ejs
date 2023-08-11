@@ -1,48 +1,16 @@
 <% layout('/layouts/boilerplate') %>
 
-    <div class="container">
-        <div class="row">
-
-            <div class="header">
-                <h3 class="text-muted">Result Form</h3>
-                <div class="col-6 offset-3 mt-3 mb-2">
-                    <input type="text" class="form-control" placeholder="Input Reference No">
-
-                </div>
-
-                <form>
-                    <div class="col-md-3">
-                        <label for="fname">First Name:</label>
-                        <input type="text" id="fname" name="fname" class="form-control" readonly>
-                    </div>
-                    <br>
-                    <div class="col-3">
-                        <label for="lname">Last Name:</label>
-                        <input type="text" id="lname" name="lname" class="form-control" readonly>
-                    </div>
-                    <br>
-                    <div>
-                        <label for="address">Age:</label>
-                        <input type="text" id="age" name="age" placeholder="Input Age">
-                    </div>
-                    <br>
-                    <div>
-                        <label for="adress">Address:</label>
-                        <input type="text" id="adress" name="adress" placeholder="Input Address">
-                    </div>
-
-                    <br>
-                    <div>
-                        <input type="submit">
-
-                </form>
-
-                <output form="numform" id="x" name="x" for="a+b"></output>
-
+    <div class="container col-md-8 mt-5">
+        <div class="col-lg-12">
+            <h1 class="fw-bold text-center" style="color: hsl(218, 81%, 75%)">
+                View Your Results Here
+            </h1>
+        </div>
+        <form action="" class="">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Input Reference No" />
+                <button class="btn btn-warning input-group-text">Search</button>
             </div>
 
-
-
-        </div>
-    </div>
+        </form>
     </div>
