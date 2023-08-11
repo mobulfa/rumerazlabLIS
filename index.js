@@ -12,7 +12,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const flash = require('connect-flash');
 
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
@@ -70,8 +70,10 @@ app.use(methodOverride('_method'));
 //EXCECUTE ROUTER
 app.use('', customerRouter);
 
+app.get('/Home')
+
 connDB().then(() => {
-    app.listen(port, () => {
-        console.log('Server is Up and Running on PORT: 8080');
+    app.listen(PORT, () => {
+        console.log(`Server is Up and Running on PORT: ${PORT}`);
     })
 });
