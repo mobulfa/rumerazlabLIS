@@ -7,7 +7,7 @@ const express = require('express');
 const path = require('path');
 const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate');
-const ExpressError = require('../utils/expressError');
+const ExpressError = require('../expressError');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const flash = require('connect-flash');
@@ -68,7 +68,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
 //EXCECUTE ROUTER
-app.use('/', customerRouter);
+app.use('', customerRouter);
 
 
 connDB().then(() => {
