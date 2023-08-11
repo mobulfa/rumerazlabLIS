@@ -68,8 +68,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
 //EXCECUTE ROUTER
-app.use('', customerRouter);
+// app.use('', customerRouter);
+api.use('/api/', customerRouter);
 
+export const handler = serverless(api);
 
 connDB().then(() => {
     app.listen(PORT, () => {
