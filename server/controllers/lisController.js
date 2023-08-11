@@ -87,10 +87,11 @@ exports.listCustomerPage = catchAsync(async (req, res) => {
             const allCustomer = await Customer.find({});
             res.status(200).render('admin/customerlist', { allCustomer });
         }
-
+        if (!req.query) {
+            const allCustomer = await Customer.find({});
+            res.status(200).render('admin/customerlist', { allCustomer });
+        }
     }
-    const allCustomer = await Customer.find({});
-    res.status(200).render('admin/customerlist', { allCustomer });
 
 
 })
@@ -165,20 +166,23 @@ exports.viewResult = catchAsync(async (req, res) => {
 
     if (req.query) {
 
-
         if (req.query.caseno) {
             const caseno = req.query.caseno;
-            const customerCaseno = await Customer.find({ caseno: `${caseno}` });
+            const customerCaseno = await Customer.findOne({ caseno: `${caseno}` });
             const testCaseno = await Processedtest.find({ caseno: `${caseno}` });
+            console.log(customerCaseno, testCaseno);
             res.status(200).render('customer/viewResultForm', { customerCaseno, testCaseno });
 
         } if (!req.query.caseno) {
-            res.status(200).render('customer/viewResultForm');
-        }
-    } if (!req.query) {
-        res.render('customer/viewResultForm');
+            const caseno = req.query.caseno;
+            const customerCaseno = await Customer.findOne({ caseno: `${caseno}` });
+            const testCaseno = await Processedtest.find({ caseno: `${caseno}` });
+            res.status(200).render('customer/viewResultForm', { customerCaseno, testCaseno });
 
+        }
     }
+    // res.status(200).render('customer/viewResultForm');
+
 })
 
 exports.editResult = catchAsync(async (req, res) => {

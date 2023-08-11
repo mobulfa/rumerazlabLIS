@@ -18,67 +18,85 @@
         <div class="container mt-2 col-md-8 offset-2 ">
             <div class="card" style="display: block;">
                 <div class="card-header">
-                    <h5>Personal Details</h5>
+                    <h5>Patient Details</h5>
                 </div>
-                <div class="card-body form-control">
-                    <div class="row g-3">
-                        <label for="" class="col-auto form-label">Name:</label>
-                        <label for="" id="name" class="col-auto form-label">
+                <% if (customerCaseno===null) {%>
+                    <h4 class="text-center">
+                        No record Found
+                    </h4>
+                    <% } else {%>
 
-                        </label>
-                        <input type="text" class="col-auto" name="fname" id="fname" value="<%= customerCaseno.fname %>"
-                            readonly>
+                        <div class="card-body form-control">
+                            <div class="row g-3">
+                                <label for="" class="col-auto form-label">Name:</label>
+                                <label for="" id="name" class="col-auto form-label">
+                                    <%= customerCaseno. lname%>, <%= customerCaseno.fname %>
+                                </label>
+                            </div>
+                            <div class="row g-3">
+                                <label for="" class="col-auto form-label">Address:</label>
+                                <label for="" id="address" class="col-auto form-label">
+                                    <%= customerCaseno.address %>
+                                </label>
+                            </div>
+                            <div class="row g-3">
+                                <label for="" class="col-auto form-label">Gender:</label>
+                                <label for="" id="gender" class="col-auto form-label">
+                                    <%= customerCaseno.gender%>
+                                </label>
+                            </div>
+                            <div class="row g-3">
+                                <label for="" class="col-auto form-label">Age:</label>
+                                <label for="" id="age" class="col-auto form-label">
+                                    <%= customerCaseno.age %>
+                                </label>
+                            </div>
+                            <br>
+                            <div class="card card-header">
+                                <h5>Lab Details</h5>
+                            </div>
+                            <hr>
+                            <table class="table table-stripped">
+                                <tr>
+                                    <th>Lab Reference</th>
+                                    <th>Department</th>
+                                    <th>Test Type</th>
+                                    <th>Normal Range</th>
+                                    <th>Result Range</th>
+                                    <th>Action</th>
+                                </tr>
+                                <% for(let test of testCaseno) {%>
+                                    <tr>
+                                        <td>
+                                            <%= test.testref %>
+                                        </td>
+                                        <td>
+                                            <%= test.name %>
+                                        </td>
+                                        <td>
+                                            <%= test.testtype %>
+                                        </td>
+                                        <td>
+                                            <%= test.range %>
+                                        </td>
+                                        <td>
+                                            <%= test.result %>
+                                        </td>
 
-                        <label for="" class="col-auto form-label">Address:</label>
-                        <label for="" id="address" class="col-auto form-label"></label>
-                    </div>
-                    <div class="row g-3">
-                        <label for="" class="col-auto form-label">Gender:</label>
-                        <label for="" id="gender" class="col-auto form-label"></label>
-                    </div>
-                    <div class="row g-3">
-                        <label for="" class="col-auto form-label">Age:</label>
-                        <label for="" id="age" class="col-auto form-label"></label>
-                    </div>
-                    <hr>
-                    <table class="table table-stripped">
-                        <tr>
-                            <th>Lab Reference</th>
-                            <th>Department</th>
-                            <th>Test Type</th>
-                            <th>Normal Range</th>
-                            <th>Result Range</th>
-                            <th>Action</th>
-                        </tr>
-                        <% for(let test of testCaseno) {%>
-                            <tr>
-                                <td>
-                                    <%= test.testref %>
-                                </td>
-                                <td>
-                                    <%= test.name %>
-                                </td>
-                                <td>
-                                    <%= test.testtype %>
-                                </td>
-                                <td>
-                                    <%= test.range %>
-                                </td>
-                                <td>
-                                    <%= test.result %>
-                                </td>
+                                        <td>
+                                            <a href="" class="btn btn-info btn-sm">Print Result</a>
+                                        </td>
 
-                                <td>
-                                    <a href="" class="btn btn-info btn-sm">Print Result</a>
-                                </td>
+                                    </tr>
+                                    <% }%>
 
-                            </tr>
-                            <% } %>
-                    </table>
-                </div>
-                <div class="card-footer text-center text-muted">
-                    Rumeraz Lab &copy; 2023
-                </div>
+                            </table>
+                        </div>
+                        <%}%>
+
+                            <div class="card-footer text-center text-muted">
+                                Rumeraz Lab &copy; 2023
+                            </div>
             </div>
 
         </div>
