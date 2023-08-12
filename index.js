@@ -11,6 +11,8 @@ const ExpressError = require('./utils/expressError');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const flash = require('connect-flash');
+const bodyparser = require("body-parser");
+const { v4: uuidv4 } = require("uuid");
 
 const PORT = process.env.PORT || 3000;
 
@@ -53,13 +55,20 @@ const sessionConfig = {
         maxAge: 1000 * 60 * 60 * 24 * 24 * 7
     }
 }
-app.use(session(sessionConfig));
+app.use(session({
+    secret: uuidv4(),
+    resave: false,
+    saveUninitialized: true
+}));
 
 app.use(flash());
 app.use((req, res, next) => {
     res.locals.success = req.flash('success');
     next();
 })
+
+app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({ extended: true }))
 
 //PARSE FORM DATA THROUGH URL
 app.use(express.urlencoded({ extended: true }));

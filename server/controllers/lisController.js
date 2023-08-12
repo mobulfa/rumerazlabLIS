@@ -13,6 +13,12 @@ var year = date.getFullYear();
 var day = date.getDay();
 var randNum = Math.floor(Math.random() * 900000);
 
+const credential = {
+    email: "admin",
+    password: "password"
+}
+
+
 
 // mongoose.connect('mongodb://127.0.0.1:27017/lis')
 //     .then(() => {
@@ -52,17 +58,19 @@ exports.login = catchAsync(async (req, res) => {
 exports.adminPage = catchAsync(async (req, res) => {
     const countCustomer = await Customer.count({});
     const countTest = await Testlist.count({});
-    if (req.body.username === 'admin' && req.body.password === 'password') {
-        res.status(200).render('admin/index', { countTest, countCustomer });
-    } else {
-        res.redirect('/Admin/login');
-    }
+
+    res.status(200).render('admin/index', { countTest, countCustomer });
+
 })
 
 exports.dashboard = catchAsync(async (req, res) => {
     const countCustomer = await Customer.count({});
     const countTest = await Testlist.count({});
-    res.render('admin/index', { countTest, countCustomer })
+    if (req.session.user) {
+        res.render('admin/index', { countTest, countCustomer, user: req.session.user })
+    } else {
+        res.send("Unauthorize User")
+    }
 })
 
 exports.testTypePage = catchAsync(async (req, res) => {

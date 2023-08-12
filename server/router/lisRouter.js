@@ -4,7 +4,21 @@ const lisController = require('../controllers/lisController');
 const customer = require('../../models/customer');
 const { model } = require('mongoose');
 
+const credential = {
+    email: "admin",
+    password: "password"
+}
 
+const Validateuser = (req, res, next) => {
+    if (req.body.email == credential.email && req.body.password == credential.password) {
+        next();
+    } else {
+        res.send('Unauthorized User')
+        res.redirect('admin/login')
+
+    }
+
+}
 
 //CUSTOMER ROUTER OR CLIENT SIDE
 
@@ -17,28 +31,28 @@ router.get('/Faq', lisController.faqsPage);
 
 //ADMIN SIDE ROUTER
 router.get('/Admin/Login', lisController.login);
-router.post('/Admin', lisController.adminPage);
-router.get('/Dashboard', lisController.dashboard);
-router.get('/Testtype', lisController.testTypePage);
-router.get('/Allcustomer', lisController.listCustomerPage);
-router.get('/Test', lisController.test);
+router.post('/Admin', Validateuser, lisController.adminPage);
+router.get('/Dashboard', Validateuser, lisController.dashboard);
+router.get('/Testtype', Validateuser, lisController.testTypePage);
+router.get('/Allcustomer', Validateuser, lisController.listCustomerPage);
+router.get('/Test', Validateuser, lisController.test);
 
 
 //ADMIN CUSTOMER CRUD
 
-router.post('/Allcustomer', lisController.saveCustomer);
-router.get('/Allcustomer/new', lisController.addCustomer)
-router.get('/Allcustomer/:id', lisController.editCustomer);
-router.patch('/Allcustomer/:id', lisController.updateCustomer);
-router.delete('/Allcustomer/:id', lisController.deleteCustomer);
+router.post('/Allcustomer', Validateuser, lisController.saveCustomer);
+router.get('/Allcustomer/new', Validateuser, lisController.addCustomer)
+router.get('/Allcustomer/:id', Validateuser, lisController.editCustomer);
+router.patch('/Allcustomer/:id', Validateuser, lisController.updateCustomer);
+router.delete('/Allcustomer/:id', Validateuser, lisController.deleteCustomer);
 
 
 
 //ADMIN TEST CRUD
-router.post('/Test', lisController.addTest);
-router.get('/Test/:id', lisController.editTest);
-router.patch('/Test/:id', lisController.updateTest);
-router.delete('/Test/:id', lisController.deleteTest);
+router.post('/Test', Validateuser, lisController.addTest);
+router.get('/Test/:id', Validateuser, lisController.editTest);
+router.patch('/Test/:id', Validateuser, lisController.updateTest);
+router.delete('/Test/:id', Validateuser, lisController.deleteTest);
 
 
 
