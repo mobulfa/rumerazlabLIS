@@ -44,5 +44,33 @@ form1.addEventListener('submit', async function (e) {
 });
 
 
+const sendEmailFooter = document.getElementById('myForm-footer');
+sendEmailFooter.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const serviceID = 'default_service';
+    const templateID = 'template_aw8rpav';
+
+    emailjs.sendForm(serviceID, templateID, this)
+        .then(() => {
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form3) })
+                .then(response => console.log('Success!', response))
+                .catch(error => console.error('Error!', error.message))
+
+            console.log('Send Success');
+            document.getElementById('myForm-footer').reset();
+            modal.style.display = "none";
+
+        }, (err) => {
+
+            console.log(JSON.stringify(err));
+        });
+});
+
+
+
+
+
 
 
